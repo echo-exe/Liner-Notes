@@ -29,6 +29,18 @@ class TempAlert extends Component {
         this.wavesurfer.play();
     }
     
+    stop() {
+        this.wavesurfer.stop();
+    }
+    
+    skipback() {
+        this.wavesurfer.skipBackward();
+    }
+    
+    skipforward() {
+        this.wavesurfer.skipForward();
+    }
+    
     getCurrentTime() {
    if (this.state) {
        return this.state.currentTime
@@ -42,12 +54,22 @@ class TempAlert extends Component {
         return (
         <div>
             <div id="waveform"></div>
+            <button class="skip-back-button" onClick={()=>{this.skipback()}}>
+                Back
+            </button>
             <button class="pause-button" onClick={()=>{this.pause()}}>
                 Pause
             </button>
             <button class="play-button" onClick={()=>{this.play()}}>
                 Play
             </button>
+            <button class ="stop-button" onClick={()=>{this.stop()}}>
+                Stop
+            </button>
+            <button class="skip-forward-button" onClick={()=>{this.skipforward()}}>
+                Forward
+            </button>    
+            
             <div class="get-time">
                 {this.getCurrentTime()}
             </div>
